@@ -1,0 +1,9 @@
+dispatch:
+  - url: "lioneltay.com/*"
+    service: prod-client
+
+  - url: "www.lioneltay.com/*"
+    service: prod-client
+
+  - url: "dev.lioneltay.com/*"
+    service: dev-client
