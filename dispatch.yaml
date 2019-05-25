@@ -1,9 +1,9 @@
 dispatch:
-  - url: "lioneltay.com/*"
+  - url: "onyami.com/*"
     service: prod-client
 
-  - url: "www.lioneltay.com/*"
+  - url: "www.onyami.com/*"
     service: prod-client
 
-  - url: "dev.lioneltay.com/*"
+  - url: "dev.onyami.com/*"
     service: dev-client
