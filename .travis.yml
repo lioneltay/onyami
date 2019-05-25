@@ -4,7 +4,7 @@ node_js:
   - node
 before_install:
   - openssl aes-256-cbc -K $encrypted_8517169ff567_key -iv $encrypted_8517169ff567_iv
-    -in ./private/keys/travis-deploy-onyami-service-account.json.enc -out ./keys/travis-deploy-onyami-service-account.json
+    -in ./keys/travis-deploy-onyami-service-account.json.enc -out ./keys/travis-deploy-onyami-service-account.json
     -d
 
 install:
