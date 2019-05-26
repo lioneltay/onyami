@@ -53,7 +53,7 @@ export const Page = ({ history, match }: Props) => {
     }
   }
 
-  if (!document) {
+  if (documentId && !document) {
     return <h1>Loading...</h1>
   }
 

@@ -5,13 +5,13 @@ import "firebase/auth"
 export const firebase = firebase_import
 
 const config = {
-  apiKey: "AIzaSyBiWGAWU13M7vkAATmOOyoFN7NrVmyRBoU",
-  authDomain: "lionel-tay.firebaseapp.com",
-  databaseURL: "https://lionel-tay.firebaseio.com",
-  projectId: "lionel-tay",
-  storageBucket: "lionel-tay.appspot.com",
-  messagingSenderId: "602899747052",
-  appId: "1:602899747052:web:057da42d04d98124",
+  apiKey: "AIzaSyCoNIBIgirBOBuPUwpWR6HiSzTBl86nWTM",
+  authDomain: "onyami.firebaseapp.com",
+  databaseURL: "https://onyami.firebaseio.com",
+  projectId: "onyami",
+  storageBucket: "onyami.appspot.com",
+  messagingSenderId: "120880948765",
+  appId: "1:120880948765:web:de193ddeb0af702a",
 }
 
 firebase.initializeApp(config)
