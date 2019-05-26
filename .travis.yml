@@ -19,28 +19,28 @@ before_deploy:
 deploy:
   - provider: gae
     project: onyami
-    keyfile: "./keys/travis-service-account.json"
+    keyfile: "./keys/travis-deploy-onyami-service-account.json"
     config: dispatch.yaml
     verbosity: debug
     skip_cleanup: true
     on: master
   - provider: gae
     project: onyami
-    keyfile: "./keys/travis-service-account.json"
+    keyfile: "./keys/travis-deploy-onyami-service-account.json"
     config: "./prod.yaml"
     verbosity: debug
     skip_cleanup: true
     on: master
   - provider: gae
     project: onyami
-    keyfile: "./keys/travis-service-account.json"
+    keyfile: "./keys/travis-deploy-onyami-service-account.json"
     config: dispatch.yaml
     verbosity: debug
     skip_cleanup: true
     on: dev
   - provider: gae
     project: onyami
-    keyfile: "./keys/travis-service-account.json"
+    keyfile: "./keys/travis-deploy-onyami-service-account.json"
     config: "./dev.yaml"
     verbosity: debug
     skip_cleanup: true
