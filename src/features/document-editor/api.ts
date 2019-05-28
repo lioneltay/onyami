@@ -1,13 +1,9 @@
-import { firestore, dataWithId } from "services/firebase"
+import { firestore, dataWithId, collection } from "services/firebase"
 import uuid from "uuid/v4"
-
-import firebase from "firebase"
-
-const collection = (collection: FirebaseCollection) =>
-  firestore.collection(collection)
 
 export type Document = {
   id: ID
+  name: string
   createdAt: number
   updatedAt: number
   content: string
@@ -25,7 +21,6 @@ export const createDocument = async (
       .set({
         ...rest,
         created_at: Date.now(),
-        updated_at: Date.now(),
       }),
     collection("content")
       .doc(id)
@@ -53,13 +48,13 @@ export const updateDocument = async ({
   data,
 }: UpdateDocumentInput): Promise<Document> => {
   const { content, ...rest } = data
+  console.log(rest)
 
   await Promise.all([
     collection("document")
       .doc(documentId)
       .update({
         ...rest,
-        created_at: Date.now(),
         updated_at: Date.now(),
       }),
     collection("content")

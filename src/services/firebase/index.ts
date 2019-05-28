@@ -46,3 +46,6 @@ export function dataWithId(
   const data = doc.data()
   return data ? { ...data, id: doc.id } : null
 }
+
+export const collection = (collection: FirebaseCollection) =>
+  firestore.collection(collection)

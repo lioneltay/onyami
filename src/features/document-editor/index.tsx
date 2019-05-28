@@ -5,14 +5,20 @@ import {
   updateDocument,
   deleteDocument,
 } from "features/document-editor/api"
-import { Button, CodeEditor, Markdown } from "lib/components"
+import {
+  Button,
+  CodeEditor,
+  Markdown,
+  Text,
+  Divider,
+  InputBase,
+} from "lib/components"
 import { debounce, noopTemplate as css } from "lib/utils"
 import mdParsers from "prettier/parser-markdown"
 import tsParsers from "prettier/parser-typescript"
 import { format } from "prettier/standalone"
 import React, { useEffect, useMemo, useState } from "react"
 import { RouteComponentProps } from "react-router-dom"
-import Header from "./Header"
 
 const plugins = [mdParsers, tsParsers]
 
@@ -21,6 +27,9 @@ type Props = RouteComponentProps<{ documentId: string | undefined }> & {}
 export const Page = ({ history, match }: Props) => {
   const documentId = match.params.documentId
   const [document, setDocument] = useState<Document | null>(null)
+  const [name, setName] = useState(
+    document ? document.name || "Untitled Document" : "Untitled Document",
+  )
 
   useEffect(() => {
     if (documentId) {
@@ -45,10 +54,10 @@ export const Page = ({ history, match }: Props) => {
     if (document) {
       updateDocument({
         documentId: document.id,
-        data: { content },
+        data: { content, name },
       })
     } else {
-      const document = await createDocument({ content })
+      const document = await createDocument({ content, name })
       history.push(`/document/${document.id}`)
     }
   }
@@ -77,31 +86,35 @@ export const Page = ({ history, match }: Props) => {
         grid-template-rows: auto minmax(0, 1fr);
         grid-template-columns: 1fr 1fr;
       `}
+      onKeyDown={e => {
+        const code = e.nativeEvent.code
+
+        if (e.metaKey && code === "KeyS") {
+          e.preventDefault()
+          e.stopPropagation()
+          persistDocument(content)
+        }
+
+        if (e.altKey && e.shiftKey && code === "KeyF") {
+          e.preventDefault()
+          e.stopPropagation()
+          formatDocument()
+        }
+      }}
     >
-      <Header
+      <div
         css={css`
           grid-column: span 2;
         `}
-      />
-
-      <div
-        className="fd-c"
-        onKeyDown={e => {
-          const code = e.nativeEvent.code
-
-          if (e.metaKey && code === "KeyS") {
-            e.preventDefault()
-            e.stopPropagation()
-            persistDocument(content)
-          }
-
-          if (e.altKey && e.shiftKey && code === "KeyF") {
-            e.preventDefault()
-            e.stopPropagation()
-            formatDocument()
-          }
-        }}
       >
+        <div className="p-4">
+          <InputBase value={name} onChange={e => setName(e.target.value)} />
+        </div>
+
+        <Divider />
+      </div>
+
+      <div className="fd-c">
         <div>
           <Button onClick={() => setFontSize(size => size + 1)}>+</Button>
           <Button onClick={() => setFontSize(size => size - 1)}>-</Button>
