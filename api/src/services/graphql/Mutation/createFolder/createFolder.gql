@@ -1,0 +1,12 @@
+input CreateFolderData {
+  parentId: ID
+  name: String!
+}
+
+input CreateFolderInput {
+  data: CreateFolderData!
+}
+
+extend type Mutation {
+  createFolder(input: CreateFolderInput!): Folder
+}

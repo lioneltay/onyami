@@ -1,0 +1,14 @@
+input UpdateDocumentData {
+  folderId: ID
+  name: String
+  content: String
+}
+
+input UpdateDocumentInput {
+  id: ID!
+  data: UpdateDocumentData!
+}
+
+extend type Mutation {
+  updateDocument(input: UpdateDocumentInput!): Document
+}

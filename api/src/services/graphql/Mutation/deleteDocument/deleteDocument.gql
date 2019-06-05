@@ -1,0 +1,7 @@
+input DeleteDocumentInput {
+  id: ID!
+}
+
+extend type Mutation {
+  deleteDocument(input: DeleteDocumentInput!): ID!
+}

@@ -1,0 +1,9 @@
+input MoveDocumentInput {
+  documentId: ID!
+  fromFolderId: ID!
+  toFolderId: ID!
+}
+
+extend type Mutation {
+  moveDocument(input: MoveDocumentInput!): Document!
+}

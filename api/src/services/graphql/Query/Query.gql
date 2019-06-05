@@ -1,0 +1,4 @@
+type Query {
+  date(date: Date!): Date!
+  url(url: URL!): URL!
+}

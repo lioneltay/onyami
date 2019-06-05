@@ -1,0 +1,7 @@
+input FolderInput {
+  id: ID!
+}
+
+extend type Query {
+  folder(input: FolderInput!): Folder!
+}
