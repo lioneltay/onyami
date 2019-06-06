@@ -1,0 +1,22 @@
+type Document {
+  id: ID!
+  folderId: ID
+  createdAt: Date!
+  name: String!
+  content: String!
+
+  folder: Folder
+}
+
+type Folder {
+  id: ID!
+  parentId: ID
+  createdAt: Date!
+  name: String!
+
+  parent: Folder
+  # Ordered by ...Ancestors -> ... -> Parent
+  ancestors: [Folder!]
+  children: [Folder!]!
+  documents: [Document!]!
+}

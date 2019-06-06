@@ -1,0 +1,7 @@
+input DeleteFolderInput {
+  id: ID!
+}
+
+extend type Mutation {
+  deleteFolder(input: DeleteFolderInput!): ID!
+}

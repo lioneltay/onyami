@@ -1,0 +1,13 @@
+input UpdateFolderData {
+  parentId: ID
+  name: String
+}
+
+input UpdateFolderInput {
+  id: ID!
+  data: UpdateFolderData!
+}
+
+extend type Mutation {
+  updateFolder(input: UpdateFolderInput!): Folder
+}

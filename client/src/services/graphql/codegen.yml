@@ -1,0 +1,18 @@
+overwrite: true
+schema: "http://localhost:7070/graphql"
+documents: src/**/*.{ts,tsx}
+generates:
+  src/services/graphql/generated.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      withHOC: false
+      noGraphQLTag: false
+      typesPrefix: I
+      noSchemaSticking: true
+      # contextType: services/graphql/contextType#ResolverContext
+      scalars:
+        Date: Date
+        URL: string

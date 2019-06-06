@@ -1,0 +1,6 @@
+node_modules
+docker-volumes
+/dist/
+/coverage/
+/**/.DS_Store
+/keys

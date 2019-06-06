@@ -1,0 +1,13 @@
+input CreateDocumentData {
+  folderId: ID
+  name: String!
+  content: String!
+}
+
+input CreateDocumentInput {
+  data: CreateDocumentData!
+}
+
+extend type Mutation {
+  createDocument(input: CreateDocumentInput!): Document
+}

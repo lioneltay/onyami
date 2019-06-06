@@ -1,0 +1,13 @@
+{
+  schema: {
+    files: 'src/**/*.gql'
+  },
+  query: {
+    files: [
+      {
+        match: 'src/**/*.gql',
+        parser: 'QueryParser',
+      }
+    ],
+  }
+}
