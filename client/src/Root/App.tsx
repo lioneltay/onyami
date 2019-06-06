@@ -1,4 +1,4 @@
-import "./random.ts"
+import "services/graphql"
 import React, { Fragment } from "react"
 import { hot } from "react-hot-loader"
 

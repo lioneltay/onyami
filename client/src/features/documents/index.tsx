@@ -1,47 +1,68 @@
-import React, { useEffect, useState, Fragment } from "react"
+import React from "react"
+import gql from "graphql-tag"
 import { noopTemplate as css } from "lib/utils"
 
-import { getDocuments } from "./api"
-import { createFolder, getRootFolders } from "services/api/folders"
-
-import {
-  Text,
-  Paper,
-  IconButton,
-  Modal,
-  Button,
-  TextField,
-} from "lib/components"
-import { AddIcon, ClearIcon } from "lib/icons"
+import { Text, Paper, IconButton } from "lib/components"
+import { AddIcon } from "lib/icons"
 import { Link } from "react-router-dom"
 
 import { documentUrl, newDocumentUrl } from "features/document-editor/routing"
 
 import { FolderGrid } from "components"
 
+import {
+  RootFoldersQueryComponent,
+  RootDocumentsQueryComponent,
+} from "services/graphql/generated"
+
+gql`
+  query RootFoldersQuery {
+    rootFolders {
+      id
+      name
+    }
+  }
+`
+
+gql`
+  query RootDocumentsQuery {
+    documents {
+      id
+      name
+    }
+  }
+`
 
 export const Page = () => {
-  const [documents, setDocuments] = useState<Document[]>([])
-  const [folders, setFolders] = useState<Folder[]>([])
-
-  useEffect(() => {
-    getDocuments().then(docs => setDocuments(docs))
-    getRootFolders().then(folders => setFolders(folders))
-  }, [])
-
   return (
     <div>
       <Text className="ml-4" variant="subtitle1">
         Documents
       </Text>
 
-      {documents ? <DocumentList documents={documents} /> : null}
+      <RootDocumentsQueryComponent>
+        {res => {
+          if (!res.data || !res.data.documents) {
+            return null
+          }
+
+          return <DocumentList documents={res.data.documents} />
+        }}
+      </RootDocumentsQueryComponent>
 
       <Text className="ml-4" variant="subtitle1">
         Folders
       </Text>
 
-      {folders ? <FolderGrid folders={folders} /> : null}
+      <RootFoldersQueryComponent>
+        {res => {
+          if (!res.data || !res.data.rootFolders) {
+            return null
+          }
+
+          return <FolderGrid folders={res.data.rootFolders} />
+        }}
+      </RootFoldersQueryComponent>
     </div>
   )
 }
