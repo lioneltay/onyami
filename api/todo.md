@@ -18,7 +18,7 @@
 
     - [x] Get Documents of a folder
       - [ ] Paginated
-    - [ ] Get Root documents
+    - [x] Get Root documents
     - [x] Move a document
 
     - [x] Get list of parent folders in order from root to current folder
@@ -29,6 +29,8 @@
       - [ ] Paginated
     - [x] Move a folder
       - [x] prevent cycles
+
+- [ ] Reimplement frontend using graphql backend instead of firestore
 
 - [ ] Users
 - [ ] Can only operate on your own documents and folders

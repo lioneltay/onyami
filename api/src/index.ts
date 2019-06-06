@@ -1,5 +1,7 @@
 import express from "express"
 
+import "services/firebase-admin"
+
 import { applyGraphql } from "services/graphql"
 const app = express()
 
@@ -9,7 +11,7 @@ app.get("/", async (req, res) => {
   res.send("Hello World!")
 })
 
-const PORT = 3030
+const PORT = 7070
 app.listen(PORT, () => {
   console.log(`API Server listening on port ${PORT}.`)
 })

@@ -3,3 +3,4 @@ docker-volumes
 /dist/
 /coverage/
 /**/.DS_Store
+/keys
