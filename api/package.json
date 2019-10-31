@@ -31,7 +31,7 @@
     "firebase-admin": "^8.0.0",
     "graphql": "^14.3.1",
     "graphql-fields": "^2.0.3",
-    "knex": "^0.17.2",
+    "knex": "^0.19.5",
     "pg": "^7.11.0",
     "ramda": "^0.26.1",
     "snake-case": "^2.1.0",
