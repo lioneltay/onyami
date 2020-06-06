@@ -24,7 +24,7 @@
   "dependencies": {
     "@types/snake-case": "^1.1.2",
     "@types/valid-url": "^1.0.2",
-    "apollo-server": "^2.6.1",
+    "apollo-server": "^2.14.2",
     "apollo-server-express": "^2.6.1",
     "camelcase": "^5.3.1",
     "express": "^4.17.1",
